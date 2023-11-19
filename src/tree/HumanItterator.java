@@ -1,20 +1,21 @@
 package tree;
 
+import human.FamilyTreeItem;
 import human.Human;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class HumanItterator implements Iterator<Human> {
+public class HumanItterator<E extends FamilyTreeItem> implements Iterator<E> {
     private  int index;
-    private List<Human> peopleList;
+    private List<E> peopleList;
 
-    public HumanItterator(List<Human> peopleList) {
+    public HumanItterator(List<E> peopleList) {
         this.peopleList = peopleList;
     }
     @Override
     public boolean hasNext() {return index < peopleList.size(); }
 
     @Override
-    public Human next() {return peopleList.get(index++);}
+    public E next() {return peopleList.get(index++);}
 }

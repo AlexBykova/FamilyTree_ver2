@@ -3,9 +3,10 @@ package human;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Collections;
 import java.util.List;
 
-public class Human implements Serializable {
+public class Human implements Serializable, FamilyTreeItem {
 
     private float snils; // Здесь были заглавные т.к. это аббревиатура. И она была написана так чисто на автомате
     private String name;
@@ -27,28 +28,39 @@ public class Human implements Serializable {
     }
 
 
-    public void setParents(Human parent1, Human parent2) {
-        this.parent1 = parent1;
-        this.parent2 = parent2;
+    @Override
+    public void setParents(Object parent1, Object parent2) {
+        this.parent1 = (Human) parent1;
+        this.parent2 = (Human) parent2;
     }
 
 
-    public void setChildren(List<Human> children) {
-        this.children = children;
+    public void setChildren(List<Object> children) {
+        this.children = List.of((List<Human>) children);
+    }
+    @Override
+    public float getId() {
+        return getSnils();
     }
 
     public float getSnils(){
         return snils;
     }
 
-    public List<Human> getChildren() {
-        return children;
+
+    public List<Object> getChildren() {
+        return Collections.singletonList((List<Human>) children);
     }
 
+    @Override
+    public void setNewChildren() {
+
+    }
+    @Override
     public String getName() {
         return name;
     }
-
+    @Override
     public Gender getGender() {
         return gender;
     }
@@ -61,6 +73,7 @@ public class Human implements Serializable {
         return deathday;
     }
 
+    @Override
     public int getAge() {
         LocalDate deathday =  this.deathday;
         LocalDate birthday = this.birthday;
@@ -72,6 +85,7 @@ public class Human implements Serializable {
             return Period.between(birthday, deathday).getYears();
         }
     }
+
 
     @Override
     public String toString() {
