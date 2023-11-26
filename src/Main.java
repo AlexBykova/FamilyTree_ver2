@@ -36,23 +36,23 @@ public class Main {
         familyTree.addPeople(petr);
 
 
-        List items = Arrays.asList(vasilisa, petr);
-        maxim.setChildren(items);
-        maria.setChildren(items);
+//        List items = Arrays.asList(vasilisa, petr);
+//        maxim.setChildren(items);
+//        maria.setChildren(items);
+//
+//        List items1 = Arrays.asList(maxim);
+//        mihail.setChildren(items1);
+//        aleftina.setChildren(items1);
+//
+//        List items2 = Arrays.asList(maria);
+//        evdakia.setChildren(items2);
+//        artem.setChildren(items2);
 
-        List items1 = Arrays.asList(maxim);
-        mihail.setChildren(items1);
-        aleftina.setChildren(items1);
 
-        List items2 = Arrays.asList(maria);
-        evdakia.setChildren(items2);
-        artem.setChildren(items2);
-
-
-        vasilisa.setParents(maxim, maria);
-        maxim.setParents(mihail, aleftina);
-        maria.setParents(evdakia, artem);
-        petr.setParents(maxim, maria);
+//        vasilisa.setParents(maxim, maria);
+//        maxim.setParents(mihail, aleftina);
+//        maria.setParents(evdakia, artem);
+//        petr.setParents(maxim, maria);
 
         Human lilia = new Human (657485, "Лилия P.", Gender.Female, getDate("09.11.2023"), null);
         familyTree.addPeople(lilia);

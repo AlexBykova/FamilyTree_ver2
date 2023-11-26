@@ -2,17 +2,15 @@ package human;
 
 import java.util.List;
 
-public interface FamilyTreeItem {
+public interface FamilyTreeItem<E> {
 
     public float getId();
-    void setNewChildren();
     public String getName();
     public Gender getGender();
     public int getAge();
+    List<E> getChildren();
 
-    public List<Object> getChildren();
+    public void setChildren(List<E> children);
 
-    public void setChildren(List<Object> list);
-
-    void setParents(Object parent1, Object parent2);
+    void setParents(E parent1, E parent2);
 }

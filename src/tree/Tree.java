@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Tree <E extends FamilyTreeItem> implements Serializable, Iterable<E>{
+public class Tree <E extends FamilyTreeItem<E>> implements Serializable, Iterable<E>{
     private List<E> peopleList;
 
     public Tree() {
@@ -38,21 +38,21 @@ public class Tree <E extends FamilyTreeItem> implements Serializable, Iterable<E
         return stringBuilder.toString();
     }
 
-//    public void setNewChildren(E children, E parent1, E parent2) {
-//        for (E human: peopleList){
-//            if (human.getId() == parent1.getSnilsId()){
-//                List<E> list = new ArrayList<>(parent1.getChildren());
-//                list.add(children);
-//                parent1.(list);
-//            }
-//            if (human.getId() == parent2.getId()){
-//                List<E> list = new ArrayList<>(parent2.getChildren());
-//                list.add(children);
-//                parent2.setChildren(list);
-//            }
-//        }
-//        children.setParents(parent1,parent2);
-//    }
+    public void setChildren(E children, E parent1, E parent2) {
+        for (E human: peopleList){
+            if (human.getId() == parent1.getId()){
+                List<E> list = new ArrayList<>(parent1.getChildren());
+                list.add(children);
+                parent1.setChildren(list);;
+            }
+            if (human.getId() == parent2.getId()){
+                List<E> list = new ArrayList<>(parent2.getChildren());
+                list.add(children);
+                parent2.setChildren(list);
+            }
+        }
+        children.setParents(parent1,parent2);
+    }
 
     @Override
     public Iterator<E> iterator() {

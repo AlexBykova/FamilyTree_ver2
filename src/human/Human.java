@@ -6,7 +6,7 @@ import java.time.Period;
 import java.util.Collections;
 import java.util.List;
 
-public class Human implements Serializable, FamilyTreeItem {
+public class Human implements Serializable, FamilyTreeItem<Human>{
 
     private float snils; // Здесь были заглавные т.к. это аббревиатура. И она была написана так чисто на автомате
     private String name;
@@ -29,15 +29,16 @@ public class Human implements Serializable, FamilyTreeItem {
 
 
     @Override
-    public void setParents(Object parent1, Object parent2) {
-        this.parent1 = (Human) parent1;
-        this.parent2 = (Human) parent2;
+    public void setParents(Human parent1, Human parent2) {
+        this.parent1 = parent1;
+        this.parent2 = parent2;
     }
 
-
-    public void setChildren(List<Object> children) {
-        this.children = List.of((List<Human>) children);
+    @Override
+    public void setChildren(List<Human> children) {
+        this.children = Collections.singletonList((Human) children);
     }
+
     @Override
     public float getId() {
         return getSnils();
@@ -48,14 +49,10 @@ public class Human implements Serializable, FamilyTreeItem {
     }
 
 
-    public List<Object> getChildren() {
-        return Collections.singletonList((List<Human>) children);
+    public List<Human> getChildren() {
+        return children;
     }
 
-    @Override
-    public void setNewChildren() {
-
-    }
     @Override
     public String getName() {
         return name;
