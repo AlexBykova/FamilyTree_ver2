@@ -2,6 +2,7 @@ package view;
 
 import model.human.Gender;
 import model.human.Human;
+import model.tree.Tree;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +19,7 @@ public interface View {
 
     void getPeopleListInfo();
 
-//    void setChildren(List<Human> children, Human familyMember);
+    void setChildren();
 
     void setParents();
 
@@ -27,5 +28,7 @@ public interface View {
     void sortByName();
 
     void sortByGender();
+    void save();
+    Tree load();
     void finish();
 }

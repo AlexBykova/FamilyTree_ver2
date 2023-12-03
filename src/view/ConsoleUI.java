@@ -3,6 +3,7 @@ package view;
 
 import model.human.Gender;
 import model.human.Human;
+import model.tree.Tree;
 import presenter.Presenter;
 
 import java.time.LocalDate;
@@ -36,7 +37,6 @@ public class ConsoleUI implements View{
 
     private void scanMenu() {
         String choiceStr = scanner.nextLine();
-        // здесь снова должен быть метод проверки на валидность введенных данных
         int choise = Integer.parseInt(choiceStr);
         mainMenu.execute(choise);
     }
@@ -67,9 +67,12 @@ public class ConsoleUI implements View{
         LocalDate birthday = presenter.getDate(birthdayStr);
 
 
-        System.out.println("Укажите дату смерти (если есть): ");
+        System.out.println("Укажите дату смерти, при ее отсутствии (человек жив) введите null: ");
         String deathStr = scanner.nextLine();
-        LocalDate deathday = presenter.getDate(deathStr);
+        LocalDate deathday;
+        if (deathStr != null) {
+            deathday = presenter.getDate(deathStr);
+        } else deathday = null;
 
         presenter.createPeople(snils, name, gender, birthday, deathday);
     }
@@ -86,10 +89,26 @@ public class ConsoleUI implements View{
     public void getPeopleListInfo() {
         presenter.getPeopleListInfo();
     }
-//    @Override
-//    public void setChildren(List<Human> children, Human familyMember){
-//        presenter.setChildren(children, familyMember);
-//    }
+    @Override
+    public void setChildren(){
+        System.out.println("Укажите снилс первого родителя: ");
+        String snilsp1Str = scanner.nextLine();
+        float snilsp1 = Float.parseFloat(snilsp1Str);
+        Human parent1 = presenter.getPeopleBySnils(snilsp1);
+
+        System.out.println("Укажите снилс второго родителя: ");
+        String snilsp2Str = scanner.nextLine();
+        float snilsp2 = Float.parseFloat(snilsp2Str);
+        Human parent2 = presenter.getPeopleBySnils(snilsp2);
+
+        System.out.println("Укажите снилс человека, которого необходимо внести, как ребенка: ");
+        String snilsStr = scanner.nextLine();
+        float snils = Float.parseFloat(snilsStr);
+        Human children = presenter.getPeopleBySnils(snils);
+
+
+        presenter.setChildren(children, parent1, parent2);
+    }
 
     @Override
     public void setParents(){
@@ -103,7 +122,7 @@ public class ConsoleUI implements View{
         float snilsp1 = Float.parseFloat(snilsp1Str);
         Human parent1 = presenter.getPeopleBySnils(snilsp1);
 
-        System.out.println("Укажите снилс человека, которому нужно добавить родтелей: ");
+        System.out.println("Укажите снилс второго родителя: ");
         String snilsp2Str = scanner.nextLine();
         float snilsp2 = Float.parseFloat(snilsp2Str);
         Human parent2 = presenter.getPeopleBySnils(snilsp2);
@@ -121,6 +140,13 @@ public class ConsoleUI implements View{
 
     public void sortByGender() {presenter.sortByGender();}
 
+    public void save(){
+        presenter.save();
+    }
+
+    public Tree load(){
+       return presenter.load();
+    }
 
     @Override
     public void answer(String answer) {

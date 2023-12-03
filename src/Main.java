@@ -2,21 +2,22 @@ import model.human.Gender;
 import model.human.Human;
 import model.tree.Tree;
 import model.writer.FileHandler;
+import view.ConsoleUI;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-
-
+        ConsoleUI consoleUI = new ConsoleUI();
+        consoleUI.start();
 
 //        Tree familyTree = new Tree();
 //        Tree familyTree1 = new Tree();
 //
 //
 //
-//        Human maxim = new Human(769375, "Максим Р", Gender.Male, getDate("04.11.1995"), null);
+//        Human maxim = new Human(576937, "Максим Р", Gender.Male, getDate("04.11.1995"), null);
 //        Human maria = new Human(869476, "Мария Р", Gender.Female, getDate("16.12.1997"), null);
 //        Human vasilisa = new Human(316431, "Василиса Р.", Gender.Female, getDate("12.05.2017"), null);
 //        Human petr = new Human(455123, "Петр Р.", Gender.Male, getDate("11.09.2021"), null);
@@ -93,21 +94,21 @@ public class Main {
 //        save(familyTree);
 //        familyTree1 = load();
 //        System.out.println(familyTree1.getPeopleListInfo());
-
+//
+//    }
+//
+//    private static void save(Tree familyTree) {
+//        FileHandler fileHandler = new FileHandler();
+//        String filePath = "src/family_tree/model.human.writer/model.human.tree.txt";
+//        fileHandler.save(familyTree, filePath);
+//    }
+//    private static Tree load (){
+//        FileHandler fileHandler = new FileHandler();
+//        String filePath = "src/family_tree/model.human.writer/model.human.tree.txt";
+//        return (Tree) (fileHandler.read(filePath));
+//    }
+//    public static LocalDate getDate(String date) {
+//        LocalDate ld = LocalDate.parse(date, java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy") );
+//        return ld;    }
     }
-
-    private static void save(Tree familyTree) {
-        FileHandler fileHandler = new FileHandler();
-        String filePath = "src/family_tree/model.human.writer/model.human.tree.txt";
-        fileHandler.save(familyTree, filePath);
-    }
-    private static Tree load (){
-        FileHandler fileHandler = new FileHandler();
-        String filePath = "src/family_tree/model.human.writer/model.human.tree.txt";
-        return (Tree) (fileHandler.read(filePath));
-    }
-    public static LocalDate getDate(String date) {
-        LocalDate ld = LocalDate.parse(date, java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy") );
-        return ld;    }
-
 }

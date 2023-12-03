@@ -3,6 +3,7 @@ package presenter;
 import model.human.Gender;
 import model.human.Human;
 import model.service.Service;
+import model.tree.Tree;
 import view.View;
 
 import java.time.LocalDate;
@@ -23,7 +24,6 @@ public class Presenter {
     }
 
     public String getPeopleInfo(Human human){
-
         return service.getPeopleInfo(human);
     }
 
@@ -57,5 +57,16 @@ public class Presenter {
     public Human getPeopleBySnils(Float snils){
         return service.getPeopleBySnils(snils);
     }
+
+    public void setChildren(Human children, Human parent1, Human parent2) {
+        service.setChildren(children, parent1, parent2);
+    }
+
+    public void save(){ service.save();}
+
+    public Tree load () {
+        return service.load();
+    }
+
 
 }

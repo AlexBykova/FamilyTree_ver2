@@ -11,6 +11,7 @@ import model.tree.Tree;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import model.writer.FileHandler;
 
 public class Service {
     private Tree<Human> familyTree;
@@ -73,8 +74,22 @@ public class Service {
         return ld;
     }
 
+    public void save(){
+        FileHandler fileHandler = new FileHandler();
+        String filePath = "src/family_tree/model.human.writer/model.human.tree.txt";
+        fileHandler.save(familyTree, filePath);
+}
+    public Tree load() {
+        FileHandler fileHandler = new FileHandler();
+        String filePath = "src/family_tree/model.human.writer/model.human.tree.txt";
+        return (Tree) (fileHandler.read(filePath));
+    }
+
     public Human getPeopleBySnils(Float snils){
         return familyTree.getPeopleBySnils(snils);
     }
 
+    public void setChildren(Human children, Human parent1, Human parent2) {
+        familyTree.setChildren(children, parent1, parent2);
+    }
 }

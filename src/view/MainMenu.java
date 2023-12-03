@@ -10,10 +10,12 @@ public class MainMenu {
 
     public MainMenu(View view) {
         commandList = new ArrayList<>();
+        commandList.add(new Load(view));
+        commandList.add(new Save(view));
         commandList.add(new CreatePeople(view));
         commandList.add(new GetPeopleInfo(view));
         commandList.add(new GetPeopleListInfo(view));
-//        commandList.add(new SetChildren(view));
+        commandList.add(new SetChildren(view));
         commandList.add(new SetParents(view));
         commandList.add(new SortByAge(view));
         commandList.add(new SortByName(view));
