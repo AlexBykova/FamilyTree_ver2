@@ -1,4 +1,6 @@
-package human;
+package model.human;
+
+import model.builder.FamilyMemberBuilder;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -6,7 +8,7 @@ import java.time.Period;
 import java.util.Collections;
 import java.util.List;
 
-public class Human implements Serializable, FamilyTreeItem<Human>{
+public class Human implements Serializable, FamilyTreeItem<Human> {
 
     private float snils; // Здесь были заглавные т.к. это аббревиатура. И она была написана так чисто на автомате
     private String name;
@@ -83,6 +85,12 @@ public class Human implements Serializable, FamilyTreeItem<Human>{
         }
     }
 
+    public Human getParent1(){
+        return parent1;
+    }
+    public Human getParent2(){
+        return parent2;
+    }
 
     @Override
     public String toString() {
@@ -105,6 +113,7 @@ public class Human implements Serializable, FamilyTreeItem<Human>{
         }
         return stringBuilder.toString();
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

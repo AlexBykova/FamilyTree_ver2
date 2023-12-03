@@ -1,6 +1,10 @@
-package tree;
+package model.tree;
 
-import human.*;
+import model.human.FamilyTreeItem;
+import model.human.comporators.HumanComparatorByAge;
+import model.human.comporators.HumanComparatorByGender;
+import model.human.comporators.HumanComparatorByName;
+import model.tree.itterator.HumanItterator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,15 +32,6 @@ public class Tree <E extends FamilyTreeItem<E>> implements Serializable, Iterabl
         peopleList.add(people);
     }
 
-    public String getPeopleListInfo(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append ("Список членов семьи: \n");
-        for (E people: peopleList){
-            stringBuilder.append(people);
-            stringBuilder.append("\n");
-        }
-        return stringBuilder.toString();
-    }
 
     public void setChildren(E children, E parent1, E parent2) {
         for (E human: peopleList){
